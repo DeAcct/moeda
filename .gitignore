@@ -9,9 +9,6 @@
 !.yarn/sdks
 !.yarn/versions
 
-# github presentation
-/presentation
-
 # testing
 /coverage
 
