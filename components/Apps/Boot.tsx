@@ -4,13 +4,7 @@ import { useEffect, useState } from "react";
 import LoadingStroke from "@/atoms/LoadingStroke";
 
 export default function SystemUI() {
-  // 1. 로컬 스토리지 확인 여부를 추적하는 상태. 초기값은 true.
-  const [isChecking, setIsChecking] = useState(true);
-
-  // 2. 부팅 화면을 실제로 보여줄지 결정하는 상태. 초기값은 false.
   const [showBootScreen, setShowBootScreen] = useState(false);
-
-  // 3. 사라지는 애니메이션(fade-out)을 위한 상태
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
@@ -19,7 +13,6 @@ export default function SystemUI() {
     // 이미 부팅한 기록이 있는 경우
     if (hasBooted) {
       // 부팅 화면을 보여주지 않고, 확인 작업만 종료
-      setIsChecking(false);
       return;
     }
 
@@ -27,8 +20,6 @@ export default function SystemUI() {
 
     // 1. 부팅 화면을 보여주도록 설정
     setShowBootScreen(true);
-    // 2. 확인 작업 종료
-    setIsChecking(false);
 
     // 3. 3초 후 사라지는 로직 실행
     const bootTimer = setTimeout(() => {
@@ -44,11 +35,6 @@ export default function SystemUI() {
 
     return () => clearTimeout(bootTimer);
   }, []); // 이 useEffect는 컴포넌트 마운트 시 한 번만 실행됩니다.
-
-  // 1. 로컬 스토리지 확인 중에는 아무것도 렌더링하지 않아 플래시를 방지합니다.
-  if (isChecking) {
-    return null;
-  }
 
   // 2. 부팅 화면을 보여줄 필요가 없으면 아무것도 렌더링하지 않습니다.
   if (!showBootScreen) {

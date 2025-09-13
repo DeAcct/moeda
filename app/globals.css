@@ -29,4 +29,15 @@
       font-weight: 999;
     }
   }
+
+  --animate-cloud: cloud 3s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+  @keyframes cloud {
+    0% {
+      transform: translate(0, 0);
+    }
+    /* 종료 지점: 왼쪽으로 10px, 아래로 5px 이동 */
+    100% {
+      transform: translate(-4px, 4px);
+    }
+  }
 }

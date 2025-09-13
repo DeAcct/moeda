@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, PropsWithChildren } from "react";
 
-export default function Clock() {
+export default function Clock({ children }: PropsWithChildren) {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -15,14 +15,16 @@ export default function Clock() {
   }, []); // 빈 배열을 전달하여 컴포넌트가 처음 마운트될 때 한 번만 실행되도록 함
 
   return (
-    <div className="flex flex-col">
-      <p className="text-white flex gap-2">
-        {time.toLocaleDateString("ko-KR", {
-          dateStyle: "long",
-        })}
-        <span></span>
-      </p>
-      <time className="text-8xl font-[999] text-white bg-clip-text text-shadow-lg">
+    <div className="flex flex-col items-center">
+      <div className="text-white text-xl flex gap-2">
+        <p className="flex items-center">
+          {time.toLocaleDateString("ko-KR", {
+            dateStyle: "long",
+          })}
+        </p>
+        {children}
+      </div>
+      <time className="text-8xl font-[900] text-white bg-clip-text text-shadow-lg">
         {time.toLocaleTimeString("ko-KR", {
           hourCycle: "h23",
           hour: "2-digit",
