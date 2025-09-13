@@ -26,11 +26,14 @@ export default function Clock({ children }: PropsWithChildren) {
 
   return (
     <div className="flex flex-col items-center">
-      <p className="flex items-center text-white text-xl">
-        {time.toLocaleDateString("ko-KR", {
-          dateStyle: "long",
-        })}
-      </p>
+      <div className="flex gap-4 text-white text-xl text-shadow-lg">
+        <p className="flex items-center ">
+          {time.toLocaleDateString("ko-KR", {
+            dateStyle: "long",
+          })}
+        </p>
+        {children}
+      </div>
       <time className="text-8xl font-[900] text-white bg-clip-text text-shadow-lg">
         {time.toLocaleTimeString("ko-KR", {
           hourCycle: "h23",
