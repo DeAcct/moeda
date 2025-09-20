@@ -102,7 +102,6 @@ async function getGridPoints(): Promise<GridPoint[]> {
   try {
     const fileContent = await fs.readFile(filePath, 'utf-8');
     cachedGridPoints = JSON.parse(fileContent);
-    console.log("Grid points data loaded and cached.");
     return cachedGridPoints!;
   } catch (error) {
     console.error("Error reading or parsing gridPoints.json:", error);
@@ -188,7 +187,6 @@ export async function GET(req: Request) {
 
   const userGrid = toXY(latitude, longitude);
   const correctedGrid = findClosestGridPoint(userGrid, allGridPoints);
-  console.log(correctedGrid)
 
   // const url = `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${process.env.GOV_WEATHER}&numOfRows=10&pageNo=1&base_date=${baseDate}&base_time=${baseTime}&nx=${}&ny=127&dataType=JSON`;
 

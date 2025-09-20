@@ -1,6 +1,8 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme {
   --font-sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI",
@@ -38,6 +40,13 @@
     /* 종료 지점: 왼쪽으로 10px, 아래로 5px 이동 */
     100% {
       transform: translate(-4px, 4px);
+    }
+  }
+
+  --animate-nudge: nudge 1s ease-in-out infinite;
+  @keyframes nudge {
+    100% {
+      background-position: 200%;
     }
   }
 }

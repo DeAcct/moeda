@@ -3,6 +3,7 @@
 "use client";
 
 import { useState, useEffect, PropsWithChildren } from "react";
+import { motion } from "motion/react";
 
 export default function Clock({ children }: PropsWithChildren) {
   // 1. 처음에는 상태를 null로 초기화합니다.
@@ -26,21 +27,26 @@ export default function Clock({ children }: PropsWithChildren) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex gap-4 text-white text-xl text-shadow-lg">
-        <p className="flex items-center ">
+      <div className="flex gap-4 justify-center text-white text-xl text-shadow-sm h-10">
+        <p className="flex items-center">
           {time.toLocaleDateString("ko-KR", {
             dateStyle: "long",
           })}
         </p>
         {children}
       </div>
-      <time className="text-8xl font-[900] text-white bg-clip-text text-shadow-lg">
+      <motion.time
+        initial={{ fontWeight: 50 }}
+        animate={{ fontWeight: 500 }}
+        transition={{ type: "spring", stiffness: 100, duration: 0.6 }}
+        className="text-8xl font-[700] text-white dark:text-black bg-clip-text text-shadow-lg"
+      >
         {time.toLocaleTimeString("ko-KR", {
           hourCycle: "h23",
           hour: "2-digit",
           minute: "2-digit",
         })}
-      </time>
+      </motion.time>
     </div>
   );
 }
