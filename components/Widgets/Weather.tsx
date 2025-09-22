@@ -28,6 +28,7 @@ export default function Weather() {
       );
       const data: WeatherApiResponse = await res.json();
 
+      console.log(data);
       // 상태에 올바른 데이터를 저장합니다.
       if (data.items) {
         setWeather(data.items);

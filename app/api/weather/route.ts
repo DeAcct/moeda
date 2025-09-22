@@ -63,8 +63,12 @@ export async function GET(req: Request) {
   const cachedWeather = await fromCache(cacheKey);
 
   if (cachedWeather) {
-    console.log("from Redis Cache");
-    return NextResponse.json(cachedWeather);
+    console.log("Redis Cache", cachedWeather);
+    return NextResponse.json({
+      items: cachedWeather,
+      position: correctedGrid.name,
+      publishedTime: `${baseDate}${baseTime}`
+    });
   }
 
   const KMA_API_KEY = process.env.KMA_API_KEY;
