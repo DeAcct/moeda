@@ -1,41 +1,46 @@
-// components/GlassContainer.tsx (수정)
+// components/GlassContainer.tsx (수정 후)
 
 "use client";
 
+import type { ComponentProps, ComponentPropsWithoutRef } from "react";
 import glass from "@/atoms/Glass";
-import { PropsWithChildren, ElementType } from "react";
 
-// 'as' prop을 포함하여 모든 HTML 속성을 받을 수 있도록 타입을 확장합니다.
-interface GlassContainerProps {
-  tag?: ElementType;
-  className?: string;
-  [key: string]: any; // href, onClick 등 나머지 모든 속성을 허용
-}
+// 1. 사용 가능한 태그를 glass 팩토리의 key들로 한정합니다. (더욱 안전해집니다)
+type GlassTag = keyof typeof glass;
 
-export default function GlassContainer({
-  // 1. 'as' prop을 받고, 기본값을 'div'로 설정합니다.
-  //    받은 prop의 이름을 'Tag'로 변경하여 사용합니다.
-  tag: Tag = "div",
+// 2. T를 GlassTag로 제한하고, `glass[T]`의 props를 직접 가져옵니다.
+//    이렇게 하면 `href` 같은 HTML 속성과 `css` 같은 팩토리 props를 모두 포함하게 됩니다.
+type GlassContainerProps<T extends GlassTag> = {
+  tag?: T;
+} & ComponentProps<(typeof glass)[T]>; // Omit이 필요 없어지고 코드가 간결해집니다.
+
+// 3. 컴포넌트 함수도 제네릭으로 만들어줍니다. 기본값은 'div'로 설정합니다.
+export default function GlassContainer<T extends GlassTag = "div">({
+  tag,
   children,
   className,
-  // 2. 나머지 모든 props를 'rest' 객체로 받습니다.
   ...rest
-}: PropsWithChildren<GlassContainerProps>) {
-  // 3. 'Tag' 이름에 해당하는 컴포넌트를 glass 팩토리에서 가져옵니다.
-  const GlassComponent = glass[Tag as string];
+}: GlassContainerProps<T>) {
+  // `tag` prop이 없으면 제네릭의 기본값('div')을 따르도록 합니다.
+  const Tag = tag || "div";
 
-  // 혹시라도 유효하지 않은 태그가 들어올 경우를 대비한 방어 코드
+  const GlassComponent = glass[Tag as keyof typeof glass];
+
   if (!GlassComponent) {
     console.warn(`GlassContainer: '${String(Tag)}'는 유효한 태그가 아닙니다.`);
-    // 기본 태그인 div로 렌더링합니다.
+    // 타입스크립트가 `rest`의 타입을 정확히 추론하기 어려우므로,
+    // 이 예외적인 상황에서는 타입을 단언해줄 수 있습니다.
     return (
-      <glass.div className={className} {...rest}>
+      <glass.div
+        className={className}
+        {...(rest as ComponentPropsWithoutRef<"div">)}
+      >
         {children}
       </glass.div>
     );
   }
 
-  // 4. 동적으로 선택된 컴포넌트를 렌더링하고, 나머지 props를 전달합니다.
+  // `rest` 객체는 이제 T에 해당하는 속성들만 포함하므로 타입이 안전합니다.
   return (
     <GlassComponent className={className} {...rest}>
       {children}

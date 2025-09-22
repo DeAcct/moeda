@@ -10,6 +10,7 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@upstash/redis": "^1.35.4",
     "clsx": "^2.1.1",
     "motion": "^12.23.16",
     "next": "15.5.2",

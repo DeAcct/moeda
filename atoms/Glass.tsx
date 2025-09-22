@@ -1,7 +1,7 @@
 "use client";
 
-import React, { forwardRef, ComponentType } from "react";
 import clsx from "clsx";
+import React, { type ComponentType, forwardRef } from "react";
 import { useLiquidGlass } from "@/hook/liquid-glass";
 
 const glassStyle =
@@ -10,6 +10,7 @@ const glassStyle =
 const componentCache = new Map<string | symbol, ComponentType<any>>();
 
 const handler: ProxyHandler<{}> = {
+  // proxy의 기본 사양을 지키기 위함
   get(target: {}, prop: string | symbol, receiver: any) {
     // 태그 이름으로 symbol을 가질 일은 없음.
     if (typeof prop === "symbol") {
@@ -34,7 +35,7 @@ const handler: ProxyHandler<{}> = {
           style,
           ...props
         },
-        ref
+        ref,
       ) => {
         const { ref: liquidRef, style: liquidStyle } = useLiquidGlass({
           strength,
@@ -62,9 +63,9 @@ const handler: ProxyHandler<{}> = {
             style: combinedStyle,
             ...props,
           },
-          children
+          children,
         );
-      }
+      },
     );
 
     StyledComponent.displayName = `glass.${tagName}`;

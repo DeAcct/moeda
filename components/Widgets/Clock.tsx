@@ -2,8 +2,8 @@
 
 "use client";
 
-import { useState, useEffect, PropsWithChildren } from "react";
 import { motion } from "motion/react";
+import { type PropsWithChildren, useEffect, useState } from "react";
 
 export default function Clock({ children }: PropsWithChildren) {
   // 1. 처음에는 상태를 null로 초기화합니다.
