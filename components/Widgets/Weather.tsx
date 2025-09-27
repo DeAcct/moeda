@@ -47,7 +47,7 @@ export default function Weather() {
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.5 }}
-      className="flex items-center gap-2 text-white" // 스타일 약간 추가
+      className="flex items-center gap-2 text-white select-none" // 스타일 약간 추가
     >
       <WeatherIcon />
       <div className="flex flex-col items-end">

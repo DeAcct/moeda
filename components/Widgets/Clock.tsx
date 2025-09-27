@@ -26,7 +26,7 @@ export default function Clock({ children }: PropsWithChildren) {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center select-none">
       <div className="flex gap-4 justify-center text-white text-xl text-shadow-sm h-10">
         <p className="flex items-center">
           {time.toLocaleDateString("ko-KR", {
@@ -39,7 +39,8 @@ export default function Clock({ children }: PropsWithChildren) {
         initial={{ fontWeight: 50 }}
         animate={{ fontWeight: 500 }}
         transition={{ type: "spring", stiffness: 100, duration: 0.6 }}
-        className="text-8xl font-[700] text-white dark:text-black bg-clip-text text-shadow-lg"
+        className="text-8xl font-[700] text-white dark:text-black bg-clip-text text-shadow-lg px-2 py-1 flex rounded-xl"
+        data-cursor-interactive
       >
         {time.toLocaleTimeString("ko-KR", {
           hourCycle: "h23",

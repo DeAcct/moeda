@@ -4,7 +4,7 @@ import GlassContainer from "./GlassContainer";
 export default function Nudge({ children }: PropsWithChildren) {
   return (
     <GlassContainer
-      className="rounded-full px-4 h-12 items-center flex"
+      className="rounded-full px-4 h-12 items-center flex select-none"
       strength="15"
       radius="12"
     >

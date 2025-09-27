@@ -51,7 +51,6 @@ export type PtyValue = "none" | "rain" | "snowRain" | "snow" | "shower" | "drops
 // 최종적으로 클라이언트에 전달될 날씨 상태 타입
 export type WeatherState = SkyValue | PtyValue;
 
-// KMA API 원본 아이템 타입 (기존보다 구체화)
 export interface KmaForecastItem {
   baseDate: string;
   baseTime: string;
