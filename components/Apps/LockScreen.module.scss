@@ -1,0 +1,21 @@
+.tapAnywhere {
+  // fixed z-1 inset-0
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+}
+.layout {
+  position: relative;
+  z-index: 2;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12rem 0;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    padding: 0 4rem;
+  }
+}

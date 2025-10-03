@@ -1,0 +1,30 @@
+.loadingStroke {
+  --animate-stroke: 2s ease-in-out infinite;
+}
+
+.track {
+  //stroke-slate-800 stroke-[4px] [stroke-linecap:round]
+  stroke: oklch(var(--gray-200));
+  stroke-width: 0.4rem;
+  stroke-linecap: round;
+  animation: stroke var(--animate-stroke);
+}
+.body {
+  // animate-stroke stroke-white stroke-[4px] [stroke-linecap:round]
+  stroke: oklch(var(--gray-900));
+  stroke-width: 0.4rem;
+  stroke-linecap: round;
+  animation: stroke var(--animate-stroke);
+}
+
+@keyframes stroke {
+  0% {
+    stroke-dashoffset: 48;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -48;
+  }
+}

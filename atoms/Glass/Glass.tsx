@@ -3,13 +3,11 @@
 import clsx from "clsx";
 import React, { type ComponentType, forwardRef } from "react";
 import { useLiquidGlass } from "@/hook/liquid-glass";
-
-const glassStyle =
-  "bg-white/5 backdrop-blur-lg border border-white/10 shadow-xs";
+import Style from "./Glass.module.scss";
 
 const componentCache = new Map<string | symbol, ComponentType<any>>();
 
-const handler: ProxyHandler<{}> = {
+const handler: ProxyHandler<Record<string, never>> = {
   // proxy의 기본 사양을 지키기 위함
   get(target: {}, prop: string | symbol, receiver: any) {
     // 태그 이름으로 symbol을 가질 일은 없음.
@@ -37,7 +35,7 @@ const handler: ProxyHandler<{}> = {
         },
         ref,
       ) => {
-        const { ref: liquidRef, style: liquidStyle } = useLiquidGlass({
+        const { ref: liquidRef, style: liquid } = useLiquidGlass({
           strength,
           chroma,
           radius,
@@ -53,12 +51,12 @@ const handler: ProxyHandler<{}> = {
           }
         };
 
-        const combinedStyle = { ...liquidStyle, ...style };
+        const combinedStyle = { ...liquid, ...style };
 
         return React.createElement(
           tagName,
           {
-            className: clsx(glassStyle, className),
+            className: clsx(Style.glass, className),
             ref: handleRef,
             style: combinedStyle,
             ...props,

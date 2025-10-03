@@ -28,13 +28,13 @@ const initialState: MouseData = {
   y: -100,
   width: 20,
   height: 20,
-  radius: "50%",
+  radius: "9999px",
   behavior: "MOVE"
 };
 
 export function useMouse() {
   const cursorReducer = (state: MouseData, action: Action): MouseData => {
-    const REPULSION_FACTOR = 0.3;
+    const REPULSION_FACTOR = 0.2;
 
     return switcher<Action, MouseData>(action)
       .case(

@@ -63,7 +63,6 @@ export async function GET(req: Request) {
   const cachedWeather = await fromCache(cacheKey);
 
   if (cachedWeather) {
-    console.log("Redis Cache", cachedWeather);
     return NextResponse.json({
       items: cachedWeather,
       position: correctedGrid.name,
@@ -87,8 +86,8 @@ export async function GET(req: Request) {
     dataType: "JSON",
     base_date: baseDate,
     base_time: baseTime,
-    nx: String(correctedGrid.x),
-    ny: String(correctedGrid.y),
+    nx: correctedGrid.x.toFixed(0),
+    ny: correctedGrid.y.toFixed(0),
   });
   const url = `${KMA_API_ENDPOINT}?${queryParams.toString()}`;
 

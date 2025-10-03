@@ -1,0 +1,16 @@
+.boot {
+  width: 100%;
+  height: 100dvh;
+  background-color: oklch(var(--gray-050));
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 500ms ease-out;
+  opacity: 1;
+}
+
+.fading {
+  opacity: 0;
+}

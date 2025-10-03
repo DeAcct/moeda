@@ -1,0 +1,136 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+@import url("./color.scss");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 0.625em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 500;
+  line-height: 1.5; /* 가독성을 위해 1보다는 1.5 권장 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all;
+}
+
+::selection {
+  background-color: oklch(var(--brand-500));
+  color: oklch(var(--gray-900));
+}
+em,
+i {
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+input,
+textarea {
+  background-color: transparent;
+}
+button {
+  border-radius: 0;
+  background-color: transparent;
+  cursor: default;
+}
+ul,
+li {
+  list-style: none;
+}
+img,
+video,
+canvas,
+textarea {
+  vertical-align: middle;
+}
+summary {
+  list-style: none;
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+.sr-only {
+  display: block;
+  clip: rect(1px 1px 1px 1px);
+  clip-path: inset(50%);
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.inner {
+  padding: 0 var(--inner-padding);
+}
+
+*:focus-visible {
+  outline: 2px solid oklch(var(--brand-500));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: oklch(var(--gray-050));
+  border-radius: 9999px;
+}
+
+// #Overay {
+//   position: fixed;
+//   bottom: 0;
+//   left: 0;
+//   z-index: 1000;
+// }
+
+a,
+button:not(:disabled),
+[role="progressbar"],
+[data-pointer="true"],
+label,
+input,
+textarea {
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
+@media (hover: hover) and (pointer: fine) {
+  a,
+  button:not(:disabled),
+  [role="progressbar"],
+  [data-pointer="true"] {
+    cursor: pointer;
+  }
+}

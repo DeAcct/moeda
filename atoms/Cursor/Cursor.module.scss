@@ -1,0 +1,15 @@
+.cursor {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  translate: -50% -50%;
+  transform-origin: center;
+  transition: border-radius 100 ease-in-out;
+  box-shadow: inset -1px -1px 2px oklch(var(--gray-950) / 0.5);
+  backdrop-filter: blur(1px);
+  /* 첫 번째 그림자는 어두운 배경에 묻히는 그림자, 두 번째 그림자는 빛을 받는 밝은 부분 */
+}
+
+.hover {
+  border: 0.1rem solid oklch(var(--gray-950) / 0.5);
+}

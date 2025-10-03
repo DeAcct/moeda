@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 // Forecast 타입을 가져옵니다. (이전 대화에서 정의한 타입)
 import type { ForecastData } from "@/app/api/weather/types";
 import WeatherIcon from "@/atoms/WeatherIcon";
+import Style from "./Weather.module.scss";
 
 // API가 반환하는 전체 데이터 구조에 대한 타입
 interface WeatherApiResponse {
@@ -43,18 +44,21 @@ export default function Weather() {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.5 }}
-      className="flex items-center gap-2 text-white select-none" // 스타일 약간 추가
+    <div
+      className={Style.weather} // 스타일 약간 추가
     >
-      <WeatherIcon />
-      <div className="flex flex-col items-end">
-        {/* weather 상태에 바로 temp가 있으므로 직접 접근합니다. */}
-        <span className="text-lg font-bold">{weather.temp}&#8451;</span>
-        <span className="text-xs">{position}</span>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.5 }}
+      >
+        <WeatherIcon className={Style.icon} />
+      </motion.div>
+      <span className={Style.line}></span>
+      <div className={Style.text}>
+        <span className={Style.position}>{position}</span>
+        <span className={Style.temp}>{weather.temp}&#8451;</span>
       </div>
-    </motion.div>
+    </div>
   );
 }

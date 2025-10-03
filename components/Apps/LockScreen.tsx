@@ -1,14 +1,23 @@
-import Clock from "../Widgets/Clock";
-import Nudge from "../Widgets/Nudge";
-import Weather from "../Widgets/Weather";
+// LockScreen.tsx
+
+import Link from "next/link";
+import BootSound from "@/atoms/BootSound";
+import Clock from "../Widgets/Clock/Clock";
+import Nudge from "../Widgets/Nudge/Nudge";
+import Weather from "../Widgets/Weather/Weather";
+import Style from "./LockScreen.module.scss";
 
 export default function LockScreen() {
   return (
-    <div className="w-full h-[100dvh] bg-[url(/abstract_purple.jpg)] bg-cover bg-center flex flex-col items-center justify-between py-24 lg:flex-row only:justify-center lg:px-10">
-      <Clock>
-        <Weather />
-      </Clock>
-      <Nudge>화면을 위로 올려 잠금해제</Nudge>
-    </div>
+    <>
+      <Link href="/home" className={Style.tapAnywhere}></Link>
+      <div className={Style.layout}>
+        <BootSound />
+        <Clock>
+          <Weather />
+        </Clock>
+        <Nudge>화면 아무데나 눌러 잠금해제</Nudge>
+      </div>
+    </>
   );
 }

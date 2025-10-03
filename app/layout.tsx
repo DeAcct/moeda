@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Cursor from "@/atoms/Cursor";
+import "./common.scss";
+import Cursor from "@/atoms/Cursor/Cursor";
 import Boot from "@/components/Apps/Boot";
 
 export const metadata: Metadata = {

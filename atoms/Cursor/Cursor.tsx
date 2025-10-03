@@ -1,5 +1,7 @@
 "use client";
+import clsx from "clsx";
 import { useMouse } from "@/hook/mouse";
+import Style from "./Cursor.module.scss";
 
 export default function Cursor() {
   const state = useMouse();
@@ -14,7 +16,7 @@ export default function Cursor() {
 
   return (
     <div
-      className="origin-center fixed pointer-events-none z-[9999] bg-white/50 -translate-x-1/2 -translate-y-1/2 box-content transition-[border-radius] duration-100 ease-in-out"
+      className={clsx(Style.cursor, [{ [Style.hover]: "hover" }])}
       style={dynamicCursorStyle}
     />
   );
