@@ -3,35 +3,36 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: oklch(var(--gray-950) / 0.3);
+  background-color: oklch(var(--gray-950) / 0.05);
   padding: 0.8rem;
   border-radius: 1.6rem;
   width: clamp(10rem, 80%, 35rem);
-  gap: 0.8rem;
+  gap: 1.2rem;
 }
 
 .time {
   display: flex;
   width: 100%;
-  gap: 1.2rem;
+  gap: 0.8rem;
 }
 
 .flippers {
   flex-grow: 1;
   display: flex;
-  gap: 0.6rem;
+  gap: 0.2rem;
 }
 
 .flipper {
   position: relative;
   flex-grow: 1;
+  min-width: 0;
   aspect-ratio: 1 / 1.168;
   perspective: 300px; /* 3D 효과를 위한 원근감 설정 */
   background: linear-gradient(
-    oklch(var(--gray-950)),
-    oklch(var(--gray-800)) 50%,
-    oklch(var(--gray-950)) 50%,
-    oklch(var(--gray-800))
+    oklch(var(--gray-950) / 0.8),
+    oklch(var(--gray-800) / 0.8) 50%,
+    oklch(var(--gray-950) / 0.8) 50%,
+    oklch(var(--gray-800) / 0.8)
   );
   border-radius: 0.8rem;
 
@@ -62,16 +63,25 @@
 
 /* 시간/분 구분자 스타일 */
 .separator {
-  position: absolute;
   font-size: 7rem;
   font-weight: 700;
-  color: #f0f0f0;
-  animation: blink 1.5s infinite;
+  color: transparent;
+  background: oklch(var(--gray-000));
+  background-clip: text;
+  animation: blink 1s infinite linear;
 }
 
+.date {
+  border-radius: 0.8rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: -1rem;
+}
 /* 구분자 깜빡임 애니메이션 */
 @keyframes blink {
   50% {
-    opacity: 0.3;
+    opacity: 0.1;
   }
 }

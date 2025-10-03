@@ -67,7 +67,7 @@ export default function Clock({ children }: PropsWithChildren) {
           ))}
         </div>
 
-        <div className={Style.separator}>:</div>
+        {/* <div className={Style.separator}>:</div> */}
 
         {/* 분 */}
         <div className={Style.flippers}>
@@ -105,6 +105,13 @@ export default function Clock({ children }: PropsWithChildren) {
           ))}
         </div>
       </div>
+      <p className={Style.date}>
+        {time.toLocaleString("ko-KR", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        })}
+      </p>
 
       {children}
     </GlassContainer>
