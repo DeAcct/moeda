@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 // Forecast 타입을 가져옵니다. (이전 대화에서 정의한 타입)
 import type { ForecastData } from "@/app/api/weather/types";
-import WeatherIcon from "@/atoms/WeatherIcon";
+import WeatherIcon from "@/components/Atoms/WeatherIcon";
 import Style from "./Weather.module.scss";
 
 // API가 반환하는 전체 데이터 구조에 대한 타입

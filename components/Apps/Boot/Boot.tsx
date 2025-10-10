@@ -2,7 +2,7 @@
 import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import LoadingStroke from "@/atoms/LoadingStroke/LoadingStroke";
+import LoadingStroke from "@/components/Atoms/LoadingStroke/LoadingStroke";
 import Style from "./Boot.module.scss";
 
 export default function Boot() {

@@ -3,7 +3,7 @@
 "use client";
 
 import type { ComponentProps, ComponentPropsWithoutRef } from "react";
-import glass from "@/atoms/Glass/Glass";
+import glass from "@/components/Atoms/Glass/Glass";
 
 // 1. 사용 가능한 태그를 glass 팩토리의 key들로 한정합니다. (더욱 안전해집니다)
 type GlassTag = keyof typeof glass;

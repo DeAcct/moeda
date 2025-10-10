@@ -5,8 +5,6 @@
   inset: 0;
 }
 .layout {
-  position: relative;
-  z-index: 2;
   width: 100dvw;
   height: 100dvh;
   display: flex;
@@ -18,4 +16,12 @@
     flex-direction: row;
     padding: 0 4rem;
   }
+}
+.clock {
+  position: relative;
+  z-index: 2;
+  width: clamp(10rem, calc(100% - 4rem), 35rem);
+}
+.nudge {
+  width: clamp(10rem, calc(100% - 4rem), 35rem);
 }

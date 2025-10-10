@@ -6,7 +6,6 @@
   background-color: oklch(var(--gray-950) / 0.05);
   padding: 0.8rem;
   border-radius: 1.6rem;
-  width: clamp(10rem, 80%, 35rem);
   gap: 1.2rem;
 }
 
@@ -71,14 +70,6 @@
   animation: blink 1s infinite linear;
 }
 
-.date {
-  border-radius: 0.8rem;
-  width: 100%;
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: 300;
-  margin-bottom: -1rem;
-}
 /* 구분자 깜빡임 애니메이션 */
 @keyframes blink {
   50% {

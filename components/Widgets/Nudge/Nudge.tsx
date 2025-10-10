@@ -1,13 +1,13 @@
-import type { PropsWithChildren } from "react";
-import GlassContainer from "../GlassContainer";
+import clsx from "clsx";
+import type { ComponentProps } from "react";
+import GlassContainer from "../../Atoms/GlassContainer";
 import Style from "./Nudge.module.scss";
 
-export default function Nudge({ children }: PropsWithChildren) {
+export default function Nudge({ children, className }: ComponentProps<"div">) {
+  const rootStyle = clsx(className, Style.nudge);
   return (
-    <GlassContainer className={Style.nudge} strength="15" radius="16">
-      <p className="bg-clip-text bg-linear-to-r from-white via-white/30 to-white text-[transparent] bg-size-[200%] animate-nudge font-[500] text-xl">
-        {children}
-      </p>
+    <GlassContainer className={rootStyle} strength="15" radius="16">
+      <p className={Style.text}>{children}</p>
     </GlassContainer>
   );
 }

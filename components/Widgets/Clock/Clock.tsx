@@ -1,11 +1,12 @@
 "use client";
 
+import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import { type PropsWithChildren, useEffect, useState } from "react";
-import GlassContainer from "../GlassContainer";
+import { type ComponentProps, useEffect, useState } from "react";
+import GlassContainer from "../../Atoms/GlassContainer";
 import Style from "./Clock.module.scss";
 
-export default function Clock({ children }: PropsWithChildren) {
+export default function Clock({ children, className }: ComponentProps<"div">) {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -22,15 +23,16 @@ export default function Clock({ children }: PropsWithChildren) {
   const hours = formatTwoDigits(time.getHours());
   const minutes = formatTwoDigits(time.getMinutes());
 
+  const rootStyle = clsx(className, Style.clock);
+
   return (
     <GlassContainer
       radius={16}
       depth={1}
-      className={Style.clock}
+      className={rootStyle}
       data-cursor-interactive
     >
       <div className={Style.time}>
-        {/* 시간 */}
         <div className={Style.flippers}>
           {hours.split("").map((digit, index) => (
             <div key={index} className={Style.flipper}>
@@ -66,10 +68,6 @@ export default function Clock({ children }: PropsWithChildren) {
             </div>
           ))}
         </div>
-
-        {/* <div className={Style.separator}>:</div> */}
-
-        {/* 분 */}
         <div className={Style.flippers}>
           {minutes.split("").map((digit, index) => (
             <div key={index} className={Style.flipper}>
@@ -105,13 +103,6 @@ export default function Clock({ children }: PropsWithChildren) {
           ))}
         </div>
       </div>
-      <p className={Style.date}>
-        {time.toLocaleString("ko-KR", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        })}
-      </p>
 
       {children}
     </GlassContainer>
