@@ -2,16 +2,18 @@
   position: fixed;
   z-index: 9999;
   pointer-events: none;
-  translate: -50% -50%;
+  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   transform-origin: center;
   transition: border-radius 100ms ease-in-out;
   box-shadow: inset -1px -1px 2px oklch(var(--gray-950) / 0.5);
   backdrop-filter: blur(1px);
-  // opacity: 0;
+  opacity: 0;
 
-  // @media (hover: hover) and (pointer: fine) {
-  //   opacity: 1;
-  // }
+  @media (hover: hover) and (pointer: fine) {
+    opacity: 1;
+  }
 }
 
 .hover {

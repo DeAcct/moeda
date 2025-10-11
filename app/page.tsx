@@ -1,4 +1,4 @@
-import LockScreen from "@/components/Apps/LockScreen/LockScreen";
+import LockScreen from "@/components/Apps/LockScreen";
 
 export default function Root() {
   return <LockScreen />;

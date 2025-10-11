@@ -22,8 +22,8 @@ export default function Cloudy() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(23 13) rotate(45) scale(21.2132)"
         >
-          <stop stopColor="#FFD900" />
-          <stop offset="1" stopColor="#E36B16" />
+          <stop stopColor="oklch(var(--amber-700))" />
+          <stop offset="1" stopColor="oklch(var(--tangerine-600))" />
         </radialGradient>
       </defs>
     </svg>

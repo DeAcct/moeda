@@ -1,10 +1,10 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
-@import url("./color.scss");
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  cursor: none;
 }
 html {
   font-size: 0.625em;
@@ -38,11 +38,10 @@ body {
     "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   font-weight: 500;
-  line-height: 1.5; /* 가독성을 위해 1보다는 1.5 권장 */
+  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-break: keep-all;
-  cursor: none;
 }
 
 ::selection {

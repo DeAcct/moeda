@@ -7,8 +7,9 @@ export default function Cursor() {
   const state = useMouse();
 
   const dynamicCursorStyle: React.CSSProperties = {
-    left: `${state.x}px`,
-    top: `${state.y}px`,
+    // left: `${state.x}px`,
+    // top: `${state.y}px`,
+    translate: `${state.x}px ${state.y}px`,
     width: `${state.width}px`,
     height: `${state.height}px`,
     borderRadius: state.radius,

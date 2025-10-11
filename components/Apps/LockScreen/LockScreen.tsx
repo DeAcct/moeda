@@ -1,10 +1,12 @@
 // LockScreen.tsx
 
 import Link from "next/link";
+
 import BootSound from "@/components/Atoms/BootSound";
-import Clock from "../../Widgets/Clock/Clock";
-import Nudge from "../../Widgets/Nudge/Nudge";
-import Weather from "../../Widgets/Weather/Weather";
+import Clock from "@/components/Widgets/Clock";
+import Nudge from "@/components/Widgets/Nudge";
+import Weather from "@/components/Widgets/Weather";
+
 import Style from "./LockScreen.module.scss";
 
 export default function LockScreen() {
