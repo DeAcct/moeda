@@ -1,0 +1,22 @@
+.clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: oklch(var(--gray-950) / 0.05);
+  padding: 0.8rem;
+  border-radius: 1.6rem;
+  gap: 1.2rem;
+}
+
+.time {
+  display: flex;
+  width: 100%;
+  gap: 0.8rem;
+}
+
+.flippers {
+  flex-grow: 1;
+  display: flex;
+  gap: 0.2rem;
+}
