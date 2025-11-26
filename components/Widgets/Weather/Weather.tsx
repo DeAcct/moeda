@@ -1,5 +1,3 @@
-// Weather.tsx (수정 후)
-
 "use client";
 
 import { motion } from "motion/react";
@@ -22,20 +20,35 @@ export default function Weather() {
   const [position, setPosition] = useState<string>();
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async (pos) => {
-      const { latitude, longitude } = pos.coords;
-      const res = await fetch(
-        `/api/weather?latitude=${latitude}&longitude=${longitude}`,
-      );
-      const data: WeatherApiResponse = await res.json();
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude } = pos.coords;
+        const res = await fetch(
+          `/api/weather?latitude=${latitude}&longitude=${longitude}`,
+        );
+        const data: WeatherApiResponse = await res.json();
 
-      console.log(data);
-      // 상태에 올바른 데이터를 저장합니다.
-      if (data.items) {
-        setWeather(data.items);
-        setPosition(data.position);
-      }
-    });
+        // 상태에 올바른 데이터를 저장합니다.
+        if (data.items) {
+          setWeather(data.items);
+          setPosition(data.position);
+        }
+      },
+      async () => {
+        // 위치 정보를 가져올 수 없는 경우 서울을 기본값으로 사용
+        const latitude = 37.5665;
+        const longitude = 126.978;
+        const res = await fetch(
+          `/api/weather?latitude=${latitude}&longitude=${longitude}`,
+        );
+        const data: WeatherApiResponse = await res.json();
+
+        if (data.items) {
+          setWeather(data.items);
+          setPosition(data.position);
+        }
+      },
+    );
   }, []);
 
   // 날씨 정보가 없으면 아무것도 렌더링하지 않습니다.
@@ -52,7 +65,10 @@ export default function Weather() {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.5 }}
       >
-        <WeatherIcon className={Style.icon} />
+        <WeatherIcon
+          className={Style.icon}
+          weatherState={weather.weatherState}
+        />
       </motion.div>
       <span className={Style.line}></span>
       <div className={Style.text}>
